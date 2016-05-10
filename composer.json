@@ -1,0 +1,17 @@
+{
+    "name": "redpx/exercice16_cms_mvc_poo",
+    "authors": [
+        {
+            "name": "ThomasGrandmagnac",
+            "email": "thomasgrandmagnac@gmail.com"
+        }
+    ],
+    "require": {},
+    "autoload" : {
+      "psr-4": {
+        "Controller\\": "controller/",
+        "Model\\": "model/",
+        "View\\": "view/"
+      }
+    }
+}
