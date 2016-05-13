@@ -1,46 +1,90 @@
 <?php
-
 namespace Model;
 
+    /**
+     * Class PageRepository
+     * @author 
+     * @package model
+     */
+/**
+ * Class PageRepository
+ * @package model
+ */
 class PageRepository
 {
-    private $pdo;
-    public function __construct(\PDO $pdo)
+    /**
+     * @var \PDO
+     */
+    private $PDO;
+
+    /**
+     * PageRepository constructor.
+     * @param \PDO $PDO
+     */
+    public function __construct(\PDO $PDO)
     {
-        $this->pdo = $pdo;
-    }
-    public function update()
-    {
-        $sql = "UPDATE `page` SET  WHERE 1";
-        $stmt = $pdo->prepare($sql);
-        $stmt->execute();
+        $this->PDO = $PDO;
     }
 
-    public function insert()
+    /**
+     * @param null $id
+     * @return array
+     */
+    public function lister($id = null)
     {
-        $sql ="INSERT INTO `page`() VALUES ()";
-        $stmt = $pdo->prepare($sql);
-        $stmt->execute();
+        return [];
     }
 
-    public function delete()
+    /**
+     * @param array $data
+     * @return bool
+     */
+    public function modifier(array $data)
     {
-        $sql = "DELETE FROM `page` WHERE 1";
-        $stmt = $pdo->prepare($sql);
-        $stmt->execute();
+        return true;
     }
 
-    public function select()
+    /**
+     * @param int $id
+     * @return bool
+     */
+    public function supprimer(int $id)
     {
-        $sql = "SELECT `id`, `slug`, `h1`, `body`, `title`, `img`, `span_text`, `span_class` FROM `page` WHERE 1";
-        $stmt = $pdo->prepare($sql);
-        $stmt->execute();
-    }
-    public function selectAll()
-    {
-        $sql = "SELECT `id`, `slug`, `h1`, `body`, `title`, `img`, `span_text`, `span_class` FROM `page`";
-        $stmt = $pdo->prepare($sql);
-        $stmt->execute();
+        return true;
     }
 
+    /**
+     * @param array $data
+     * @return int
+     */
+    public function inserer(array $data)
+    {
+        return 1;
+    }
+
+    /**
+     * @param $slug
+     * @return \stdClass\bool
+     */
+    public function getBySlug($slug)
+    {
+        $sql ="SELECT 
+                    `id`, 
+                    `slug`,
+                     `h1`,
+                    `body`, 
+                    `title`,
+                     `img`,
+                     `span_text`,
+                     `span_class`
+                FROM 
+                    `teletubbies` 
+                WHERE 
+                    `slug` = :slug
+                ";
+        $stmt = $this->PDO->prepare($sql);
+        $stmt->bindParam(':slug',$slug,\PDO::PARAM_STR);
+        $stmt->execute();
+        return $stmt->fetchObject();
+    }
 }
