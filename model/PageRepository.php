@@ -3,7 +3,7 @@ namespace Model;
 
     /**
      * Class PageRepository
-     * @author 
+     * @author Yann Le Scouarnec <yann.le-scouarnec@hetic.net>
      * @package model
      */
 /**
@@ -69,16 +69,10 @@ class PageRepository
     public function getBySlug($slug)
     {
         $sql ="SELECT 
-                    `id`, 
-                    `slug`,
-                     `h1`,
                     `body`, 
-                    `title`,
-                     `img`,
-                     `span_text`,
-                     `span_class`
+                    `title` 
                 FROM 
-                    `teletubbies` 
+                    `page` 
                 WHERE 
                     `slug` = :slug
                 ";
