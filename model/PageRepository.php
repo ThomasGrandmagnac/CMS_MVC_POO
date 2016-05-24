@@ -81,4 +81,17 @@ class PageRepository
         $stmt->execute();
         return $stmt->fetchObject();
     }
+
+    public function getNav()
+    {
+        $sql ="SELECT 
+                    `slug`, 
+                    `title` 
+                FROM 
+                    `page`
+                ";
+        $stmt = $this->PDO->prepare($sql);
+        $stmt->execute();
+        return $stmt->fetchAll();
+    }
 }
