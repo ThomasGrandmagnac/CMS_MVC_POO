@@ -86,6 +86,8 @@ class PageController
         // generer la nav
         
         $navigation = $this->repository->getNav();
+//        var_dump($navigation);
+//        die();
         
         include "view/nav.php";
 
