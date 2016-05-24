@@ -75,14 +75,20 @@ class PageController
             return;
         }
         // je dois avoir la nav initailiseee pour que la vue la montre
+        $nav = $this->genererLaNav($slug);
         // j'ai des donnees, je le affiche
         include "view/page-display.php";
     }
 
-    private function genererLaNav()
+    private function genererLaNav($slug)
     {
         ob_start();
         // generer la nav
+        
+        $navigation = $this->repository->getNav();
+        
+        include "view/nav.php";
+
         $nav = ob_get_clean();
         return $nav;
     }
