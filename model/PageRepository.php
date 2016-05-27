@@ -91,6 +91,6 @@ class PageRepository
                 ";
         $stmt = $this->PDO->prepare($sql);
         $stmt->execute();
-        return $stmt->fetchAll();
+        return $stmt->fetchAll(\PDO::FETCH_OBJ);
     }
 }

@@ -13,3 +13,21 @@ try{
 $page = new \Controller\PageController($pdo);
 // afficher la page demandee
 $page->displayAction();
+
+function isActive($val1, $val2)
+{
+    if($val1 == $val2){
+        return " active ";
+    } else {
+        return '';
+    }
+}
+
+function isChecked($val1, $val2)
+{
+    if($val1 == $val2){
+        return ' checked="checked"';
+    } else {
+        return '';
+    }
+}
