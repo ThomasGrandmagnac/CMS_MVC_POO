@@ -17,6 +17,7 @@ switch($action){
     case 'supprimer':
         break;
     case 'details':
+        $page->detailsAction();
         break;
     case 'lister':
     default:
