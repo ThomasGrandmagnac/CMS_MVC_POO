@@ -63,7 +63,7 @@ class PageRepository
 
     /**
      * @param $slug
-     * @return \stdClass\bool
+     * @return stdClass|bool
      */
     public function getBySlug($slug)
     {
@@ -81,9 +81,10 @@ class PageRepository
         return $stmt->fetchObject();
     }
 
-    public function getNav()
+    public function findAll()
     {
         $sql ="SELECT 
+                    `id`,
                     `slug`, 
                     `title` 
                 FROM 

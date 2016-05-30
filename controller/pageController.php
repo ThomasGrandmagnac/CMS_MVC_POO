@@ -51,6 +51,8 @@ class PageController
      */
     public function listeAction()
     {
+        $data = $this->repository->findAll();
+        require 'view/admin/pageList.php';
     }
 
     /**
@@ -83,9 +85,9 @@ class PageController
     private function genererLaNav($slug)
     {
         ob_start();
-        // generer la nav
 
-        $navigation = $this->repository->getNav();
+        // generer la nav
+        $data = $this->repository->findAll();
 
         include "view/nav.php";
 
