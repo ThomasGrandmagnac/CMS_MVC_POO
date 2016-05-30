@@ -16,7 +16,7 @@
 <nav class="navbar navbar-inverse navbar-fixed-top">
     <div class="container">
         <div class="navbar-header">
-            <a class="navbar-brand" href="../">Back Office</a>
+            <a class="navbar-brand" href="../">Accueil</a>
         </div>
         <div id="navbar" class="navbar-collapse collapse">
             <ul class="nav navbar-nav">
@@ -27,7 +27,7 @@
 </nav>
 <div class="container theme-showcase" role="main">
     <h1>Liste degueu</h1>
-    <a href="/admin/index.php?a=ajouter">+</a>
+    <a href="/admin/index.php?a=ajouter">Ajouter une page</a>
     <table class="table-bordered table-responsive table">
         <tr>
             <th>ID</th>
@@ -48,14 +48,14 @@
                 <td><?=$page->slug?></td>
                 <td><?=$page->title?></td>
                 <td>
-                    <a href="/admin/index.php?a=details&id=<?=$page->id?>">d</a>
-                    <a href="/admin/index.php?a=modifier&id=<?=$page->id?>">m</a>
-                    <a href="/admin/?a=supprimer&id=<?=$page->id?>">-</a>
+                    <a href="./index.php?a=details&id=<?=$page->id?>">Info</a>
+                    <a href="./index.php?a=modifier&id=<?=$page->id?>">Modifier</a>
+                    <a href="./?a=supprimer&id=<?=$page->id?>">Supprimer</a>
                 </td>
             </tr>
         <?php endforeach;?>
     </table>
-    <a href="/admin/index.php?a=ajouter">+</a>
+    <a href="/admin/index.php?a=ajouter">Ajouter une page</a>
 </div>
 </body>
 </html>

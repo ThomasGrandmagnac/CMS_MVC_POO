@@ -40,10 +40,22 @@ class PageController
     }
 
     /**
-     *
+     * @throws \Exception
      */
     public function detailsAction()
     {
+        if(!isset($_GET['id'])){
+            throw new \Exception('mdr le truc');
+        }
+        // recuperation de donnees
+        $data = $this->repository->getById($_GET['id']);
+        // affichage des donnees
+        require "view/admin/pageDetails.php";
+        if ($data === false) {
+            include "view/404.php";
+        } else {
+            include "view/admin/pageDetails.php";
+        }
     }
 
     /**
