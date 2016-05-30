@@ -23,4 +23,3 @@ switch($action){
         $page->listeAction();
         break;
 }
-$page->displayAction();
