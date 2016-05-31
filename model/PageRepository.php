@@ -96,7 +96,7 @@ class PageRepository
         $stmt = $this->PDO->prepare($sql);
         $stmt->bindParam(':id',$id,\PDO::PARAM_INT);
         $stmt->execute();
-        $stmt->fetchObject();
+        return $stmt->fetchObject();
     }
 
     public function findAll()

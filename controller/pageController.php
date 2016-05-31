@@ -48,9 +48,9 @@ class PageController
             throw new \Exception('mdr le truc');
         }
         // recuperation de donnees
-        $data = $this->repository->getById($_GET['id']);
+        $id = $_GET['id'];
+        $data = $this->repository->getById($id);
         // affichage des donnees
-        require "view/admin/pageDetails.php";
         if ($data === false) {
             include "view/404.php";
         } else {
