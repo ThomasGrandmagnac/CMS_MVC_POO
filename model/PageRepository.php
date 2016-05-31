@@ -58,7 +58,7 @@ class PageRepository
         $stmt = $this->PDO->prepare($sql);
         $stmt->bindParam(':id',$id,\PDO::PARAM_INT);
         $stmt->execute();
-        return true;
+        return 1;
     }
 
     /**
@@ -67,6 +67,37 @@ class PageRepository
      */
     public function inserer(array $data)
     {
+        $sql = "INSERT INTO 
+                    `page`
+                        (
+                         `slug`, 
+                         `h1`, 
+                         `body`, 
+                         `title`, 
+                         `img`, 
+                         `span_text`, 
+                         `span_class`
+                         ) 
+                 VALUES 
+                     (
+                     :slug, 
+                     :h1,
+                     :body,
+                     :title,
+                     :img,
+                     :span_text, 
+                     :span_class
+                     ) 
+               ";
+        $stmt = $this->PDO->prepare($sql);
+        $stmt->bindParam(':slug',$data['slug'],\PDO::PARAM_STR);
+        $stmt->bindParam(':h1',$data['h1'],\PDO::PARAM_STR);
+        $stmt->bindParam(':body',$data['body'],\PDO::PARAM_STR);
+        $stmt->bindParam(':title',$data['title'],\PDO::PARAM_STR);
+        $stmt->bindParam(':img',$data['img'],\PDO::PARAM_STR);
+        $stmt->bindParam(':span_text',$data['span_text'],\PDO::PARAM_STR);
+        $stmt->bindParam(':span_class',$data['span_class'],\PDO::PARAM_STR);
+        $stmt->execute();
         return 1;
     }
 
@@ -77,8 +108,12 @@ class PageRepository
     public function getBySlug($slug)
     {
         $sql ="SELECT 
-                    `body`, 
-                    `title` 
+                    `title`, 
+                    `h1`,
+                    `img`,
+                    `body`,
+                    `span_text`,
+                    `span_class`
                 FROM 
                     `page` 
                 WHERE 

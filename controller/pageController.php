@@ -23,6 +23,14 @@ class PageController
      */
     public function ajoutAction()
     {
+        if(count($_POST) === 0){
+            include "view/admin/pageAdd.php";
+        } else {
+            $data = $_POST;
+            $this->repository->inserer($data);
+            $data = $this->repository->findAll();
+            include "view/admin/pageList.php";
+        }
     }
 
     /**
@@ -39,7 +47,8 @@ class PageController
         if ($data === false) {
             include "view/404.php";
         } else {
-            header('Location: pageList.php');
+            $data = $this->repository->findAll();
+            include "view/admin/pageList.php";
         }
     }
 
