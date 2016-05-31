@@ -54,7 +54,7 @@
             </tr>
         <?php endforeach;?>
     </table>
-    <a class="btn btn-success" href="/admin/index.php?a=ajouter">Ajouter une page</a>
+    <a class="btn btn-success" href="./?a=ajouter">Ajouter une page</a>
 </div>
 </body>
 </html>

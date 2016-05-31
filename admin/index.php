@@ -11,8 +11,10 @@ if (isset($_GET['a'])) {
 }
 switch($action){
     case 'ajouter':
+        $page->ajoutAction();
         break;
     case 'modifier':
+        $page->modifierAction();
         break;
     case 'supprimer':
         $page->supprimerAction();
