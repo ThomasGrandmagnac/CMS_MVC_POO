@@ -26,8 +26,7 @@
     </div>
 </nav>
 <div class="container theme-showcase" role="main">
-    <h1>Liste degueu</h1>
-    <a href="/admin/index.php?a=ajouter">Ajouter une page</a>
+    <h1>Liste des Pages</h1>
     <table class="table-bordered table-responsive table">
         <tr>
             <th>ID</th>
@@ -48,14 +47,14 @@
                 <td><?=$page->slug?></td>
                 <td><?=$page->title?></td>
                 <td>
-                    <a href="./index.php?a=details&id=<?=$page->id?>">Info</a>
-                    <a href="./index.php?a=modifier&id=<?=$page->id?>">Modifier</a>
-                    <a href="./?a=supprimer&id=<?=$page->id?>">Supprimer</a>
+                    <a class="btn btn-info" href="./?a=details&id=<?=$page->id?>">Info</a>
+                    <a class="btn btn-warning" href="./?a=modifier&id=<?=$page->id?>">Modifier</a>
+                    <a class="btn btn-danger" href="./?a=supprimer&id=<?=$page->id?>">Supprimer</a>
                 </td>
             </tr>
         <?php endforeach;?>
     </table>
-    <a href="/admin/index.php?a=ajouter">Ajouter une page</a>
+    <a class="btn btn-success" href="/admin/index.php?a=ajouter">Ajouter une page</a>
 </div>
 </body>
 </html>

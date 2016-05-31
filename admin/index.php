@@ -15,6 +15,7 @@ switch($action){
     case 'modifier':
         break;
     case 'supprimer':
+        $page->supprimerAction();
         break;
     case 'details':
         $page->detailsAction();
