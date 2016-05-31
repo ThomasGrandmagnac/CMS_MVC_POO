@@ -30,6 +30,17 @@ class PageController
      */
     public function supprimerAction()
     {
+        if(!isset($_GET['id'])){
+            throw new \Exception('marche pô');
+        }
+        $id = $_GET['id'];
+        $data = $this->repository->supprimer($id);
+        // affichage des donnees
+        if ($data === false) {
+            include "view/404.php";
+        } else {
+            header('Location: pageList.php');
+        }
     }
 
     /**
@@ -45,7 +56,7 @@ class PageController
     public function detailsAction()
     {
         if(!isset($_GET['id'])){
-            throw new \Exception('mdr le truc');
+            throw new \Exception('marche pô');
         }
         // recuperation de donnees
         $id = $_GET['id'];
