@@ -26,20 +26,34 @@ class PageRepository
     }
 
     /**
-     * @param null $id
-     * @return array
-     */
-    public function lister($id = null)
-    {
-        return [];
-    }
-
-    /**
      * @param array $data
      * @return bool
      */
-    public function modifier(array $data)
+    public function modifier(array $data, $id)
     {
+        $sql = "UPDATE
+                    `page`
+                SET
+                    `slug` = :slug,
+                    `h1` = :h1,
+                    `title` = :title,
+                    `body` = :body,
+                    `img` = :img,
+                    `span_text` = :span_text,
+                    `span_class` = :span_class
+                WHERE
+                    `id` = :id
+                ";
+        $stmt = $this->PDO->prepare($sql);
+        $stmt->bindParam(':id',$id, \PDO::PARAM_INT);
+        $stmt->bindParam(':slug', $data['slug'], \PDO::PARAM_STR);
+        $stmt->bindParam(':h1', $data['h1'], \PDO::PARAM_STR);
+        $stmt->bindParam(':title', $data['title'], \PDO::PARAM_STR);
+        $stmt->bindParam(':body', $data['body'], \PDO::PARAM_STR);
+        $stmt->bindParam(':img', $data['img'], \PDO::PARAM_STR);
+        $stmt->bindParam(':span_text', $data['span_text'], \PDO::PARAM_STR);
+        $stmt->bindParam(':span_class', $data['span_class'], \PDO::PARAM_STR);
+        $stmt->execute();
         return true;
     }
 
@@ -129,9 +143,13 @@ class PageRepository
     {
         $sql = "SELECT
                     `id`,
-                    `slug`,
+                    `title`, 
+                    `h1`,
+                    `img`,
                     `body`,
-                    `title`
+                    `span_text`,
+                    `span_class`,
+                    `slug`
                 FROM
                     `page`
                 WHERE

@@ -39,7 +39,7 @@ class PageController
     public function supprimerAction()
     {
         if(!isset($_GET['id'])){
-            throw new \Exception('marche pô');
+            throw new \Exception('marche po');
         }
         $id = $_GET['id'];
         $data = $this->repository->supprimer($id);
@@ -53,10 +53,31 @@ class PageController
     }
 
     /**
-     *
+     * @throws \Exception
      */
     public function modifierAction()
     {
+        if (!isset($_GET['id'])) {
+            throw new \Exception('pas d\'id');
+        }
+        $id = $_GET['id'];
+        if (count($_POST) === 0) {
+            $details = $this->repository->getById($id);
+            if ($details === false) {
+                include "view/404.php";
+            } else {
+                include "view/admin/pageUpgrade.php";
+            }
+        } else {
+            $data = $_POST;
+            foreach ($data as $key => $value) {
+                $data[$key] = htmlspecialchars($data[$key]);
+            }
+            $this->repository->modifier($data, $id);
+            $details = $this->repository->getById($id);
+            $data = $this->repository->findAll();
+            include "view/admin/pageList.php";
+        }
     }
 
     /**
