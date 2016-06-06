@@ -10,6 +10,11 @@ try{
     die($e->getMessage());
 }
 
+/** Renvoie 'active' pour permettre d'afficher la page active dans la navigation
+ * @param $val1
+ * @param $val2
+ * @return string
+ */
 function isActive($val1, $val2)
 {
     if($val1 == $val2){
@@ -19,15 +24,11 @@ function isActive($val1, $val2)
     }
 }
 
-function isChecked($val1, $val2)
-{
-    if($val1 == $val2){
-        return ' checked="checked"';
-    } else {
-        return '';
-    }
-}
-
+/** Renvoie 'selected' l'option selectionnée précedemment dans la page back office de modification
+ * @param $val1
+ * @param $val2
+ * @return string
+ */
 function isSelected($val1, $val2)
 {
     if($val1 == $val2){

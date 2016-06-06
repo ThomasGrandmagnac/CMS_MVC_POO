@@ -1,3 +1,4 @@
+<!--PAGE QUI PERMET D'AFFICHER EN BACK OFFICE LA LISTE DES PAGES PRÉSENTES DANS LA BASE DE DONNÉES-->
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -16,9 +17,6 @@
             margin-bottom: 50px;
             text-transform: uppercase;
         }
-        table, tr, td, thead, th, tbody, .table-bordered {
-            border 0
-        }
         thead {
             background: #101010;
             color: white;
@@ -27,6 +25,9 @@
         }
         tr:nth-child(even) {
             background: #e0e0e0;
+        }
+        thead tr th, tbody tr td {
+            border: 0 !important;
         }
     </style>
 </head>

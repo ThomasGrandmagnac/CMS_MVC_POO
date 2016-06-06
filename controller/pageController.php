@@ -18,8 +18,9 @@ class PageController
         $this->repository = new PageRepository($PDO);
     }
 
-    /**
-     *
+    /** Gestion du bouton ajout dans le back office
+     * Renvoie vers la pageAdd.php pour pouvoir ajouter une nouvelle page
+     * Renvoie vers la pageList.php une fois l'ajout terminé
      */
     public function ajoutAction()
     {
@@ -33,8 +34,9 @@ class PageController
         }
     }
 
-    /**
-     *
+    /** Gestion du bouton de suppression dans le back office
+     * Renvoie vers la page 404 quand la page n'est pas trouvée
+     * Renvoie vers pageList.php une fois la suppression effectuée
      */
     public function supprimerAction()
     {
@@ -52,7 +54,10 @@ class PageController
         }
     }
 
-    /**
+    /** Gestion du bouton de modification dans le back office
+     * Renvoie vers la page 404 quand la page n'est pas trouvée
+     * Renvoie vers pageUpgrade.php
+     * Renvoie vers pageList.php une fois la modification terminée
      * @throws \Exception
      */
     public function modifierAction()
@@ -80,7 +85,9 @@ class PageController
         }
     }
 
-    /**
+    /** Gestion du bouton info dans le back office
+     * Renvoie vers la page 404 quand la page n'est pas trouvée
+     * Renvoie vers pageDetails.php
      * @throws \Exception
      */
     public function detailsAction()
@@ -99,8 +106,8 @@ class PageController
         }
     }
 
-    /**
-     *
+    /** Génération de la liste des pages dans pageList.php dans le back office
+     * 
      */
     public function listeAction()
     {
@@ -108,8 +115,8 @@ class PageController
         require 'view/admin/pageList.php';
     }
 
-    /**
-     *
+    /** Gestion de l'affichage de la page
+     *  Renvoie la page 404.php si la page n'est pas trouvée.
      */
     public function displayAction()
     {
@@ -119,9 +126,7 @@ class PageController
         if(isset($_GET['p'])){
             $slug = $_GET['p'];
         }
-        // en PHP 7
-        // $slug = $_GET['p'] ?? $_POST['p'] ?? 'teletubbies';
-        // recuperation les donnees de la page qui correspond au slug
+        // recuperation des donnees de la page qui correspond au slug
         $page = $this->repository->getBySlug($slug);
         // si il n'y a pas de donnees, erreur 404
         if($page === false){
@@ -135,11 +140,14 @@ class PageController
         include "view/page-display.php";
     }
 
+    /** Génération de la navigation
+     * @param $slug
+     * @return string
+     */
     private function genererLaNav($slug)
     {
         ob_start();
 
-        // generer la nav
         $data = $this->repository->findAll();
 
         include "view/nav.php";
