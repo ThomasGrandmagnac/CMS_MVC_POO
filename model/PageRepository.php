@@ -25,7 +25,7 @@ class PageRepository
         $this->PDO = $PDO;
     }
 
-    /**
+    /** Requete SQL pour modifier une page
      * @param array $data
      * @return bool
      */
@@ -57,7 +57,7 @@ class PageRepository
         return true;
     }
 
-    /**
+    /** Requete SQL pour supprimer une page
      * @param int $id
      * @return bool
      */
@@ -75,7 +75,7 @@ class PageRepository
         return 1;
     }
 
-    /**
+    /** Requete SQL pour insérer une page
      * @param array $data
      * @return int
      */
@@ -115,7 +115,7 @@ class PageRepository
         return 1;
     }
 
-    /**
+    /** Requete SQL pour obtenir tous les éléments d'une page (sauf id) selon son slug
      * @param $slug
      * @return stdClass|bool
      */
@@ -139,6 +139,10 @@ class PageRepository
         return $stmt->fetchObject();
     }
 
+    /** Requete SQL pour obtenir tous les éléments d'une page selon son id
+     * @param $id
+     * @return mixed
+     */
     public function getById($id)
     {
         $sql = "SELECT
@@ -161,6 +165,9 @@ class PageRepository
         return $stmt->fetchObject();
     }
 
+    /** Requete SQL pour obtenir l'id, le slug et le title d'une page
+     * @return array
+     */
     public function findAll()
     {
         $sql = "SELECT 

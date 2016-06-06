@@ -1,3 +1,4 @@
+<!--PAGE QUI PERMET D'AFFICHER EN BACK OFFICE LA POSSIBILITE DES MODIFIER LES CHAMPS-->
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -28,11 +29,9 @@
 <div class="container theme-showcase" role="main">
     <form action="" method="post">
         <fieldset class="form-group">
-            <div class="form-group has-success has-feedback">
-                <!--Slug-->
-                <label class="control-label" for="slug">Slug</label>
-                <input type="text" class="form-control control-label" id="slug" name="slug" placeholder="slug" value="<?=$details->slug?>" required>
-            </div>
+            <!--Slug-->
+            <label class="control-label" for="slug">Slug</label>
+            <input type="text" class="form-control control-label" id="slug" name="slug" placeholder="slug" value="<?=$details->slug?>" required>
             <!--Title-->
             <label for="title">Title</label>
             <input type="text" class="form-control" id="title" name="title" placeholder="Title" value="<?=$details->title?>" required>
@@ -51,6 +50,7 @@
             <!--Span class-->
             <label for="span_class">Span Class</label>
             <select class="form-control" id="span_class" name="span_class">
+            <!--Fonction isSelected dans init.php permettant de prendre le dernier champ sélectionné-->
                 <option <?= isSelected('label-danger', $details->span_class) ?> >label-danger</option>
                 <option <?= isSelected('label-success', $details->span_class) ?> >label-success</option>
             </select>
