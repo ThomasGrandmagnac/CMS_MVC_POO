@@ -26,11 +26,14 @@
     </div>
 </nav>
 <div class="container theme-showcase" role="main">
-    <h1>Details de la page</h1>
+    <h1>Détails de la page</h1>
     <p><h4>ID</h4><?=$data->id?></p>
     <p><h4>Slug</h4><?=$data->slug?></p>
     <p><h4>Title</h4><?=$data->title?></p>
     <p><h4>Body</h4><pre><?=htmlentities($data->body)?></pre></p>
+    <p><h4>Image</h4><pre><?=$data->img?></pre></p>
+    <p><h4>Span Text</h4><?=$data->span_text?></p>
+    <p><h4>Span Class</h4><?=$data->span_class?></p>
 </div>
 </body>
 </html>
